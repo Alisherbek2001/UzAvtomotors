@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'dashboard.apps.DashboardConfig',
     # Install apps
     'rest_framework',
+    'django_json_widget',
 ]
 
 MIDDLEWARE = [
