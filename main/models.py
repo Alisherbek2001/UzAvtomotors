@@ -17,14 +17,30 @@ class Category(BaseModel):
     class Meta:
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
+        
+        
+class SubCategory(BaseModel):
+    name = models.CharField(max_length=255)
+    category = models.ForeignKey(Category, on_delete = models.CASCADE)
+    slug = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+     
+    class Meta:
+        verbose_name = 'Subcategory'
+        verbose_name_plural = 'Subcategories'
 
 class AboutCompany(BaseModel):
     name = models.CharField(max_length=255)
-    slug = models.CharField(max_length=255, null=True, blank=True)
-    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     body = models.TextField()
-    image = models.ImageField(upload_to='about/company', blank=True, null=True)
+    image = models.ImageField(upload_to='main/about_company', blank=True, null=True)
     text = models.TextField()
     history_name = models.CharField(max_length=255)
     history = models.JSONField(default=list)
@@ -50,8 +66,8 @@ class AboutCompany(BaseModel):
 
 
 class AboutCompanyImage(BaseModel):
-    about_company = models.ForeignKey(AboutCompany, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='about/company/images/')
+    about_company = models.ForeignKey(AboutCompany, related_name='company_images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='main/about_company/images/')
 
     def save(self, *args, **kwargs):
         # Yangilanish holatida eski faylni o'chirish
@@ -80,14 +96,13 @@ class AboutCompanyImage(BaseModel):
 
 class GoalCompany(BaseModel):
     name = models.CharField(max_length=255)
-    slug = models.CharField(max_length=255, null=True, blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
     title1 = models.CharField(max_length=255)
     goal_list = models.JSONField(default=list)
-    image1 = models.ImageField(upload_to='goal/company', blank=True, null=True)
+    image1 = models.ImageField(upload_to='main/goal_company', blank=True, null=True)
     title2 = models.CharField(max_length=255)
     table = models.JSONField(default=list)
-    image2 = models.ImageField(upload_to='goal/company', blank=True, null=True)
+    image2 = models.ImageField(upload_to='main/goal_company', blank=True, null=True)
     
     def add_event(self, event):
         self.goal_list.append(event)
@@ -105,7 +120,6 @@ class GoalCompany(BaseModel):
         return self.table
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
         # Yangilanish holatida eski fayllarni o'chirish
         if self.pk:
             old_instance = GoalCompany.objects.get(pk=self.pk)
@@ -143,6 +157,7 @@ class GoalCompany(BaseModel):
 
     def __str__(self) -> str:
         return self.name
+    
     class Meta:
         verbose_name = 'Goal Company'
         verbose_name_plural = 'Goal Companies'
@@ -150,15 +165,10 @@ class GoalCompany(BaseModel):
 
 class OurViewsCompany(BaseModel):
     name = models.CharField(max_length=255)
-    slug = models.CharField(max_length=255, null=True, blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
     our_views = models.CharField(max_length=255)
     our_mission = models.CharField(max_length=255)
     our_corporate_culture = models.JSONField(default=list)
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -196,8 +206,7 @@ class OurViewsCompany(BaseModel):
         
 class SupervisorBoardCompany(BaseModel):
     name = models.CharField(max_length=255)
-    slug = models.CharField(max_length=255, null=True, blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
     supervisor_board_list = models.JSONField(default=list)
     
     
@@ -209,10 +218,6 @@ class SupervisorBoardCompany(BaseModel):
     def get_supervisors(self):
         return self.supervisor_board_list
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super().save(*args, **kwargs)
-
     def __str__(self):
         return self.name
 
@@ -222,9 +227,10 @@ class SupervisorBoardCompany(BaseModel):
         
         
 class LidershipCompany(BaseModel):
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     position = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='lidership/company/')
+    image = models.ImageField(upload_to='main_lidership/company')
     experience = models.CharField(max_length=255)
     
     def __str__(self) -> str:
@@ -234,3 +240,15 @@ class LidershipCompany(BaseModel):
         verbose_name = 'LidershipCompany'
         verbose_name_plural = 'LidershipCompanies'
     
+    
+class OrganizationalStructure(BaseModel):
+    name = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='main_organizational/company')
+        
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        verbose_name = "Organizational Structure"
+        verbose_name_plural = "Organizational Structures"

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AboutCompany, Category, AboutCompanyImage, GoalCompany,OurViewsCompany, SupervisorBoardCompany,LidershipCompany
+from .models import SubCategory, AboutCompany, Category, AboutCompanyImage, GoalCompany,OurViewsCompany, SupervisorBoardCompany,LidershipCompany,OrganizationalStructure
 from django import forms
 
 class AboutCompanyImageInline(admin.TabularInline):
@@ -25,9 +25,9 @@ class AboutCompanyAdminForm(forms.ModelForm):
 class AboutCompanyAdmin(admin.ModelAdmin):
     form = AboutCompanyAdminForm
     inlines = [AboutCompanyImageInline]
-    list_display = ['name', 'title', 'category']
+    list_display = ['name', 'title', 'subcategory']
     search_fields = ['name', 'title']
-    list_filter = ['category']
+    list_filter = ['subcategory']
 
 admin.site.register(AboutCompany, AboutCompanyAdmin)
 
@@ -43,9 +43,9 @@ class GoalCompanyAdminForm(forms.ModelForm):
 
 class GoalCompanyAdmin(admin.ModelAdmin):
     form = GoalCompanyAdminForm
-    list_display = ['name', 'title1', 'category']
+    list_display = ['name', 'title1', 'subcategory']
     search_fields = ['name', 'title1']
-    list_filter = ['category']
+    list_filter = ['subcategory']
 
 admin.site.register(GoalCompany, GoalCompanyAdmin)
 
@@ -61,9 +61,9 @@ class OurViewsCompanyAdminForm(forms.ModelForm):
 
 class OurViewsCompanyAdmin(admin.ModelAdmin):
     form = OurViewsCompanyAdminForm
-    list_display = ['name', 'our_views', 'our_mission', 'category']
+    list_display = ['name', 'our_views', 'our_mission', 'subcategory']
     search_fields = ['name', 'our_views', 'our_mission']
-    list_filter = ['category']
+    list_filter = ['subcategory']
 
 admin.site.register(OurViewsCompany, OurViewsCompanyAdmin)
 
@@ -79,9 +79,9 @@ class SupervisorBoardCompanyAdminForm(forms.ModelForm):
 
 class SupervisorBoardCompanyAdmin(admin.ModelAdmin):
     form = SupervisorBoardCompanyAdminForm
-    list_display = ['name', 'category']
+    list_display = ['name', 'subcategory']
     search_fields = ['name']
-    list_filter = ['category']
+    list_filter = ['subcategory']
 
 admin.site.register(SupervisorBoardCompany, SupervisorBoardCompanyAdmin)
 
@@ -92,3 +92,12 @@ class LidershipCompanyAdmin(admin.ModelAdmin):
     list_filter = ['position']
 
 admin.site.register(LidershipCompany, LidershipCompanyAdmin)
+
+
+class OrganizationalStructureAdmin(admin.ModelAdmin):
+    list_display = ['name']
+    search_fields = ['name']
+    list_filter = ['name']
+
+admin.site.register(OrganizationalStructure, OrganizationalStructureAdmin)
+admin.site.register(SubCategory)
