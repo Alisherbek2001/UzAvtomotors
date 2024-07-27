@@ -28,7 +28,8 @@ class SubCategory(BaseModel):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        if not self.slug:
+            self.slug = slugify(self.name)
         super().save(*args, **kwargs)
      
     class Meta:
@@ -96,7 +97,7 @@ class AboutCompanyImage(BaseModel):
 
 class GoalCompany(BaseModel):
     name = models.CharField(max_length=255)
-    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, related_name='goal_companies')
     title1 = models.CharField(max_length=255)
     goal_list = models.JSONField(default=list)
     image1 = models.ImageField(upload_to='main/goal_company', blank=True, null=True)

@@ -33,3 +33,16 @@ class AboutCompanySubCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = SubCategory
         fields = ['id', 'name', 'category', 'slug', 'about_companies']
+        
+        
+class GoalCompanySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GoalCompany
+        fields = ['id','name','subcategory','title1','goal_list','image1','title2','table','image2']
+        
+class GoalCompanySubCategorySerializer(serializers.ModelSerializer):
+    goal_companies = GoalCompanySerializer(many=True, read_only=True)
+
+    class Meta:
+        model = SubCategory
+        fields = ['id', 'name', 'category', 'slug', 'goal_companies']   
