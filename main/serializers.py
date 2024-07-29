@@ -67,3 +67,9 @@ class LidershipCompanySerizalizer(serializers.ModelSerializer):
         model = LidershipCompany
         fields = '__all__'
         
+        
+class OrganizationalCompanySerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = OrganizationalStructure
+        fields = '__all__'

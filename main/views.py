@@ -32,4 +32,11 @@ class LidershipCompanyListAPIView(generics.ListAPIView):
     queryset = LidershipCompany.objects.all()
     serializer_class = LidershipCompanySerizalizer
     
+
+class OrganizationalStructureListAPIView(generics.ListAPIView):
+    queryset = OrganizationalStructure.objects.all()
+    serializer_class = OrganizationalCompanySerializer
+    
+    
+    
     
