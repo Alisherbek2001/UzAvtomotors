@@ -25,7 +25,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('dash/', include('dashboard.urls')),
     path('main/', include('main.urls')),
-]
-
-urlpatterns += static(settings.STATIC_URL, documents_root=settings.STATIC_ROOT)
-urlpatterns += static(settings.MEDIA_URL, documents_root=settings.MEDIA_ROOT)
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
