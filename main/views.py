@@ -38,5 +38,11 @@ class OrganizationalStructureListAPIView(generics.ListAPIView):
     serializer_class = OrganizationalCompanySerializer
     
     
+class DevelopmentStrategyListAPIView(generics.ListAPIView):
+    queryset = DevelopmentStrategy.objects.all()
+    serializer_class = OrganizationalCompanySerializer
+    
+    
+    
     
     

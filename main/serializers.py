@@ -73,3 +73,9 @@ class OrganizationalCompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = OrganizationalStructure
         fields = '__all__'
+        
+class DevelopmentStrategyCompanySerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = DevelopmentStrategy
+        fields = '__all__'

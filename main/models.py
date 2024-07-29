@@ -254,6 +254,19 @@ class OrganizationalStructure(BaseModel):
         verbose_name = "Organizational Structure"
         verbose_name_plural = "Organizational Structures"
         
+        
+class DevelopmentStrategy(BaseModel):
+    name = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='development_main/company/')
+    
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        verbose_name = "Development strategy"
+        verbose_name_plural = "Development strategies"
+        
 class EnvironmentalProtectionCompany(BaseException):
     name = models.CharField(max_length=255)
     subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)

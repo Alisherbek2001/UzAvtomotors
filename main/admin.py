@@ -135,7 +135,7 @@ admin.site.register(ReportCorporate)
 admin.site.register(ResultVotingCorporate)
 admin.site.register(ShareholdersCorporate)
 admin.site.register(TenderCorporate)
-
+admin.site.register(DevelopmentStrategy)
 
 @admin.register(Engine)
 class EngineAdmin(admin.ModelAdmin):
