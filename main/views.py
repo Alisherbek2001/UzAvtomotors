@@ -43,6 +43,8 @@ class DevelopmentStrategyListAPIView(generics.ListAPIView):
     serializer_class = OrganizationalCompanySerializer
     
     
-    
+class EnvironmentalCompanyListAPIView(generics.ListAPIView):
+    queryset = EnvironmentalProtectionCompany.objects.all()
+    serializer_class = EnvironmentalCompanySerializer
     
     

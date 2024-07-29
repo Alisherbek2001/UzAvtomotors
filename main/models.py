@@ -267,7 +267,7 @@ class DevelopmentStrategy(BaseModel):
         verbose_name = "Development strategy"
         verbose_name_plural = "Development strategies"
         
-class EnvironmentalProtectionCompany(BaseException):
+class EnvironmentalProtectionCompany(BaseModel):
     name = models.CharField(max_length=255)
     subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='main_environmental/company')
