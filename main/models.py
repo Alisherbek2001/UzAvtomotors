@@ -232,7 +232,7 @@ class LidershipCompany(BaseModel):
     name = models.CharField(max_length=255)
     position = models.CharField(max_length=255)
     image = models.ImageField(upload_to='main_lidership/company')
-    experience = models.CharField(max_length=255)
+    experience = models.CharField(max_length=255,null=True,blank=True)
     
     def __str__(self) -> str:
         return self.name

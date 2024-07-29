@@ -17,11 +17,19 @@ class GoalCompanySubCategoryDetailView(generics.RetrieveAPIView):
     serializer_class = GoalCompanySubCategorySerializer
     lookup_field = 'slug'
     
+    
 class OurViewDetailView(generics.RetrieveAPIView):
     queryset = OurViewsCompany.objects.all()
     serializer_class = OurViewSerializer
     
+    
 class SupervisorDetailView(generics.RetrieveAPIView):
     queryset = SupervisorBoardCompany.objects.all()
     serializer_class = SupervisorBoardSerializer
+    
+    
+class LidershipCompanyListAPIView(generics.ListAPIView):
+    queryset = LidershipCompany.objects.all()
+    serializer_class = LidershipCompanySerizalizer
+    
     

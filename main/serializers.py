@@ -60,3 +60,10 @@ class SupervisorBoardSerializer(serializers.ModelSerializer):
     class Meta:
         model = SupervisorBoardCompany
         fields = '__all__'
+        
+class LidershipCompanySerizalizer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = LidershipCompany
+        fields = '__all__'
+        
