@@ -20,3 +20,8 @@ class GoalCompanySubCategoryDetailView(generics.RetrieveAPIView):
 class OurViewDetailView(generics.RetrieveAPIView):
     queryset = OurViewsCompany.objects.all()
     serializer_class = OurViewSerializer
+    
+class SupervisorDetailView(generics.RetrieveAPIView):
+    queryset = SupervisorBoardCompany.objects.all()
+    serializer_class = SupervisorBoardSerializer
+    

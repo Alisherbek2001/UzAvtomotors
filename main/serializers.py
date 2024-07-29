@@ -54,3 +54,9 @@ class OurViewSerializer(serializers.ModelSerializer):
         model = OurViewsCompany
         fields = '__all__'
         
+        
+class SupervisorBoardSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = SupervisorBoardCompany
+        fields = '__all__'
