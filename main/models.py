@@ -280,7 +280,7 @@ class EnvironmentalProtectionCompany(BaseModel):
         verbose_name_plural = "Environmental Protection Privacies"
         
 
-class EnergyManagmentSystemCompany(BaseException):
+class EnergyManagmentSystemCompany(BaseModel):
     name = models.CharField(max_length=255)
     subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='main_energy/company')

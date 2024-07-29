@@ -48,3 +48,7 @@ class EnvironmentalCompanyListAPIView(generics.ListAPIView):
     serializer_class = EnvironmentalCompanySerializer
     
     
+class EnergyManagmentCompanyListAPIVIew(generics.ListAPIView):
+    queryset = EnergyManagmentSystemCompany.objects.all()
+    serializer_class = EnvironmentalCompanySerializer
+    

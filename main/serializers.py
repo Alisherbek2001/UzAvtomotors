@@ -85,3 +85,11 @@ class EnvironmentalCompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = EnvironmentalProtectionCompany
         fields = '__all__'
+        
+
+class EnergyManagmentCompanySerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = EnergyManagmentSystemCompany
+        fields = '__all__'
+                
