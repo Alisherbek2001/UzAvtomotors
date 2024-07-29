@@ -93,3 +93,9 @@ class EnergyManagmentCompanySerializer(serializers.ModelSerializer):
         model = EnergyManagmentSystemCompany
         fields = '__all__'
                 
+
+class DutiesCompanySerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = DutiesCompany
+        fields = '__all__'
