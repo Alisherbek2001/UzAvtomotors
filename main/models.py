@@ -21,14 +21,15 @@ class Category(BaseModel):
         
 class SubCategory(BaseModel):
     name = models.CharField(max_length=255)
-    category = models.ForeignKey(Category, on_delete = models.CASCADE)
+    category = models.ForeignKey(Category, on_delete = models.CASCADE, related_name='subcategories')
     slug = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        if not self.slug:
+            self.slug = slugify(self.name)
         super().save(*args, **kwargs)
      
     class Meta:
@@ -96,7 +97,7 @@ class AboutCompanyImage(BaseModel):
 
 class GoalCompany(BaseModel):
     name = models.CharField(max_length=255)
-    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, related_name='goal_companies')
     title1 = models.CharField(max_length=255)
     goal_list = models.JSONField(default=list)
     image1 = models.ImageField(upload_to='main/goal_company', blank=True, null=True)
@@ -245,10 +246,333 @@ class OrganizationalStructure(BaseModel):
     name = models.CharField(max_length=255)
     subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
     file = models.FileField(upload_to='main_organizational/company')
-        
+
     def __str__(self) -> str:
         return self.name
     
     class Meta:
         verbose_name = "Organizational Structure"
         verbose_name_plural = "Organizational Structures"
+        
+class EnvironmentalProtectionCompany(BaseException):
+    name = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='main_environmental/company')
+    
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        verbose_name = "Environmental Protection Privacy"
+        verbose_name_plural = "Environmental Protection Privacies"
+        
+
+class EnergyManagmentSystemCompany(BaseException):
+    name = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='main_energy/company')
+    
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        verbose_name = "Energy Managment System Policy"
+        verbose_name_plural = "Energy Managment System Policies"
+        
+        
+        
+class DutiesCompany(BaseModel):
+    file_name = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='main_duties/company')
+    
+    def __str__(self) -> str:
+        return self.file_name
+    
+    class Meta:
+        verbose_name = "Duties of the compliance service"
+        verbose_name_plural = "Duties of the compliance services"
+        
+
+class CorporateDocumentsCorporate(BaseModel):
+    file_name = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='main_corporate_documants/corporate')
+    
+    def __str__(self) -> str:
+        return self.file_name
+    
+    class Meta:
+        verbose_name = "Corporate Governance Document"
+        verbose_name_plural = "Corporate Governance Documents"
+        
+
+class RegulationCorporate(BaseModel):
+    file_name = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='main_regulation/corporate')
+    
+    def __str__(self) -> str:
+        return self.file_name
+    
+    class Meta:
+        verbose_name = "Regulation"
+        verbose_name_plural = "Regulations"
+        
+        
+class ShareholdersCorporate(BaseModel):
+    filename = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='main_regulation/corporate')
+    
+    def __str__(self) -> str:
+        return self.filename
+    
+    class Meta:
+        verbose_name = "MEETING OF SHAREHOLDER"
+        verbose_name_plural = "MEETING OF SHAREHOLDERS"
+        
+class AffiliatesCorporate(BaseModel):
+    name = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    manzili = models.CharField(max_length=255)
+    
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        verbose_name = "LIST OF AFFILIATES"
+        verbose_name_plural = "LIST OF AFFILIATES"
+        
+
+class FactsCorporate(BaseModel):
+    date = models.DateField(default='2023-05-29')
+    name = models.CharField(max_length=255)
+    number = models.CharField(max_length=255)
+    volume = models.FloatField() 
+    file = models.FileField(upload_to='main_facts/corporate')
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    
+    def __str__(self) -> str:
+        return self.date
+    
+    class Meta:
+        verbose_name = "Important Fact"
+        verbose_name_plural = "Important Facts"
+        
+        
+class LaborProtectionCorporate(BaseModel):
+    filename = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='main_labor/corporate')
+    
+    def __str__(self) -> str:
+        return self.filename
+    
+    class Meta:
+        verbose_name = "Labor protection and technical safety"
+        verbose_name_plural = "Labor protection and technical safeties"
+        
+
+class DividendCorporate(BaseModel):
+    year = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    calculated_dividend = models.CharField(max_length=255)
+    paid_dividends = models.CharField(max_length=255)
+    
+    def __str__(self) -> str:
+        return self.year
+    
+    class Meta:
+        verbose_name = "Dividend"
+        verbose_name_plural = "Dividends"
+        
+
+class ReportCorporate(BaseModel):
+    filename = models.CharField(max_length=244)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='main_report/corporate')
+    
+    def __str__(self) -> str:
+        return self.filename
+    
+    class Meta:
+        verbose_name = "Report"
+        verbose_name_plural = "Reports"
+    
+        
+class PurchasePlanCorporate(BaseModel):
+    filename = models.CharField(max_length=244)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='main_purchase/corporate')
+    
+    def __str__(self) -> str:
+        return self.filename
+    
+    class Meta:
+        verbose_name = "Purchase Plan"
+        verbose_name_plural = "Purchase Plans"
+        
+
+class TenderCorporate(BaseModel):
+    name = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+    tender_id = models.IntegerField()
+    price = models.FloatField()
+    link = models.CharField(max_length=255)
+    
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        verbose_name = 'Tender'
+        verbose_name_plural = 'Tenders'
+        
+        
+class BusinessPlanCorporate(BaseModel):
+    filename = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='main_business/corporate')
+    
+    def __str__(self) -> str:
+        return self.filename
+    
+    class Meta:
+        verbose_name = 'Business Plan'
+        verbose_name_plural = 'Business Plans'
+        
+class IssueOfSecuritiesCorporate(BaseModel):
+    filename = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='main_security/corporate')
+    
+    def __str__(self) -> str:
+        return self.filename
+    
+    class Meta:
+        verbose_name = 'Issue of Security'
+        verbose_name_plural = 'Issue of Securities'
+    
+    
+class AuditorsRepotsCorporate(BaseModel):
+    filename = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='main_auditors/corporate')
+    
+    def __str__(self) -> str:
+        return self.filename
+    
+    class Meta:
+        verbose_name = "Auditor's Report"
+        verbose_name_plural = "Auditor's Reports"
+   
+   
+class FinancialCorporate(BaseModel):
+    filename = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='main_financial/corporate')
+    
+    def __str__(self) -> str:
+        return self.filename
+    
+    class Meta:
+        verbose_name = "Financial and Economic Status Indicator"
+        verbose_name_plural = "Financial and Economic Status Indicators"     
+        
+        
+
+class ResultVotingCorporate(BaseModel):
+    filename = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='main_result/corporate')
+    
+    def __str__(self) -> str:
+        return self.filename
+    
+    class Meta:
+        verbose_name = "Result of voting"
+        verbose_name_plural = "Results of voting" 
+        
+        
+class News(BaseModel):
+    title = models.CharField(max_length=255)
+    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    slug = models.CharField(max_length=255,null=True,blank=True)
+    body = models.TextField()
+
+    def __str__(self):
+        return f"{self.pk}) {self.title}"
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+    
+    class Meta:
+        verbose_name = "News"
+        verbose_name_plural = "News"
+
+
+class NewsImage(BaseModel):
+    news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='news_images')
+    image = models.ImageField(upload_to='news/news_images/')
+
+    def __str__(self):
+        return f"{self.pk}) {self.news.title}"
+
+    def delete(self, *args, **kwargs):
+        self.image.delete(save=False)
+        super().delete(*args, **kwargs)
+
+    class Meta:
+        verbose_name = "News image"
+        verbose_name_plural = "News images"
+        
+        
+from django.db import models
+
+class Engine(models.Model):
+    ENGINE_TYPES = [
+        ('CSS_PRIME', 'CSS PRIME'),
+        ('STANDARD', 'Standart'),
+        # Boshqa dvigatel turlarini ham qo'shishingiz mumkin
+    ]
+
+    name = models.CharField(max_length=100, verbose_name="Dvigatel nomi")
+    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='products/image')
+    type = models.CharField(max_length=20, choices=ENGINE_TYPES, default='STANDARD', verbose_name="Dvigatel turi")
+    cylinder_volume = models.FloatField(verbose_name="Silindr hajmi, L")
+    cylinder_spacing = models.IntegerField(verbose_name="Silindrlar orasidagi masofa, mm")
+    cylinder_diameter = models.FloatField(verbose_name="Silindr diametri, mm")
+    piston_stroke = models.FloatField(verbose_name="Porshen yo'li, mm")
+    compression_ratio = models.FloatField(verbose_name="Siqish darajasi")
+    number_of_cylinders = models.IntegerField(verbose_name="Silindrlar soni")
+    valves_per_cylinder = models.IntegerField(verbose_name="Har bir silindrdagi klapanlar soni")
+    max_torque = models.FloatField(verbose_name="Maksimal aylanish momenti, Nm")
+    max_power = models.FloatField(verbose_name="Maksimal quvvati, kW")
+    fuel_consumption = models.FloatField(verbose_name="Yoqilg'i sarfi, L/100km")
+    weight = models.FloatField(verbose_name="Dvigatel og'irligi, kg")
+    dimensions = models.CharField(max_length=50, verbose_name="Dvigatel o'lchamlari (U/K/B), mm")
+    emission_standard = models.CharField(max_length=20, verbose_name="Emissiya standarti")
+    recommended_octane = models.IntegerField(verbose_name="Taklif qilingan benzin oktan raqami")
+
+    def __str__(self):
+        return f"{self.get_type_display()} - {self.name}"
+
+    class Meta:
+        verbose_name = "Dvigatel"
+        verbose_name_plural = "Dvigatellar"
+        
+        
+class RotationEmployee(BaseModel):
+    filename = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='rotate_main/file')
+    
+    def __str__(self) -> str:
+        return self.filename
+    
+    
