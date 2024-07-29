@@ -46,3 +46,11 @@ class GoalCompanySubCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = SubCategory
         fields = ['id', 'name', 'category', 'slug', 'goal_companies']   
+        
+        
+class OurViewSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = OurViewsCompany
+        fields = '__all__'
+        

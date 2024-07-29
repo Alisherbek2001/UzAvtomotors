@@ -16,3 +16,7 @@ class GoalCompanySubCategoryDetailView(generics.RetrieveAPIView):
     queryset = SubCategory.objects.all()
     serializer_class = GoalCompanySubCategorySerializer
     lookup_field = 'slug'
+    
+class OurViewDetailView(generics.RetrieveAPIView):
+    queryset = OurViewsCompany.objects.all()
+    serializer_class = OurViewSerializer
