@@ -59,7 +59,7 @@
             </a>
             <div class="collapse" id="Kompaniya">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Kompaniya haqida</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{% url 'dash:about_companies' %}">Kompaniya haqida</a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Maqsad va qadriyatlarimiz</a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Qarashlarimiz va vazifalarimiz</a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Kuzatuv kengashi</a></li>
@@ -272,6 +272,7 @@
       </nav>
 
       {% block content %}{% endblock %}
+      
       <footer class="footer">
         <div class="d-sm-flex justify-content-center justify-content-sm-between">
           <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved.</span>
