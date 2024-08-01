@@ -5,112 +5,67 @@
 {% block title %}Kompaniya haqida List{% endblock %}
 
 
+
 {% block css %}
 {% endblock %}
 
 
 {% block content %}
-<div class="container-fluid page-body-wrapper col-lg-12">
-  <div class="main-panel">
-    <div class="content-wrapper pb-0">
-      <div class="page-header">
-        <h3 class="page-title"> Basic Tables </h3>
-        <nav aria-label="breadcrumb">
-            <a href=""><button type="button" class="btn btn-outline-success btn-fw">Create</button></a>
-            <a href=""><button type="button" class="btn btn-outline-info btn-fw">Update</button></a>
-            <a href=""><button type="button" class="btn btn-outline-danger btn-fw">Delete</button></a>
-        </nav>
-      </div>
-      <div class="row">
-        <div class="grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Kompaniya haqidagi ma`lumotlar</h4>
-              </p>
-              <div class="table-responsive mb-5">
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th> Name </th>
-                      <th> Title </th>
-                      <th> Body </th>
-                      <th> Image </th>
-                      <th> Text </th>
-                      <th> History name </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td> {{company.name|slice:":20"}} </td>
-                      <td> {{company.title|slice:":20"}} </td>
-                      <td> {{company.body|slice:":20"}} </td>
-                      <td> 
-                        <div class="">
-                          {% if company.image %}
-                          <a href="{{ company.image.url }}" target="_blank" class="text-bold">Link</a>
-                          {% else %}
-                          <p>No image available</p>
-                          {% endif %}
-                        </div>
-                      </td>
-                      <td> {{company.text|slice:":20"}} </td>
-                      <td> {{company.history_name|slice:":20"}} </td>
-                    </tr>
-                  </tbody>
-                </table>
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title"> Kompaniya > Kompaniya haqida </h3>
+    </div>
+    <div class="row">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Kompaniya haqida ma`lumotlarini o`zgartirish</h4>
+            <form class="forms-sample">
+              <div class="form-group row">
+                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="exampleInputUsername2" placeholder="Username">
+                </div>
               </div>
-              <h4 class="card-title">Histories</h4>
-              </p>
-              <div class="table-responsive mb-5">
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th> № </th>
-                      <th> Name </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for his in company.history %}
-                    <tr>
-                      <td> {{forloop.counter}} </td>
-                      <td> {{his|slice:":100"}} </td>
-                    {% endfor %}
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="form-group row">
+                <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                  <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email">
+                </div>
               </div>
-              <h4 class="card-title">Images</h4>
-              </p>
-              <div class="table-responsive mb-5">
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th> № </th>
-                      <th> Image </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for image in images %}
-                    <tr>
-                      <td> {{forloop.counter}} </td>
-                      <td> 
-                        <div class="d-flex align-items-center gap-2">
-                          {% if image.image %}
-                              <a href="{{ image.image.url }}" target="_blank" class="text-bold">Link</a>
-                          {% else %}
-                              <p>No image available</p>
-                          {% endif %}
-                        </div>
-                      </td>
-                    {% endfor %}
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="form-group row">
+                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Mobile</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="exampleInputMobile" placeholder="Mobile number">
+                </div>
               </div>
-            </div>
+              <div class="form-group row">
+                <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Password</label>
+                <div class="col-sm-9">
+                  <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Re Password</label>
+                <div id="inputContainer" class="col-sm-9">
+                  <div class="input-group mb-2">
+                      <input type="text" name="fields" class="form-control" placeholder="Enter text">
+                      <button type="button" class="btn btn-danger me-2" onclick="removeInput(this)">-</button>
+                  </div>
+                  </div>
+                  <button class="btn btn-success" type="button" onclick="addInput()">+</button>
+                  </div>
+              <div class="form-check form-check-flat form-check-primary">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input"> Remember me <i class="input-helper"></i></label>
+              </div>
+              <button type="submit" class="btn btn-primary me-2">Submit</button>
+              <button class="btn btn-light">Cancel</button>
+            </form>
           </div>
         </div>
-      </div>       
+      </div>
     </div>
   </div>
 </div>
@@ -118,4 +73,34 @@
 
 
 {% block js %}
+<script>
+  function addInput() {
+      var container = document.getElementById('inputContainer');
+      var newInputGroup = document.createElement('div');
+      newInputGroup.className = 'input-group mb-2';
+      
+      var newInput = document.createElement('input');
+      newInput.type = 'text';
+      newInput.name = 'fields';
+      newInput.placeholder = 'Enter text';
+      newInput.className = 'form-control ';
+      
+      var removeButton = document.createElement('button');
+      removeButton.type = 'button';
+      removeButton.innerText = '-';
+      removeButton.className = 'btn btn-danger me-2';
+      removeButton.onclick = function() {
+          removeInput(removeButton);
+      };
+      
+      newInputGroup.appendChild(newInput);
+      newInputGroup.appendChild(removeButton);
+      container.appendChild(newInputGroup);
+  }
+
+  function removeInput(button) {
+      var inputGroup = button.parentNode;
+      inputGroup.parentNode.removeChild(inputGroup);
+  }
+</script>
 {% endblock %}
