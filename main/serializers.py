@@ -136,3 +136,9 @@ class LaborProtectionCorporateSerializer(serializers.ModelSerializer):
     class Meta:
         model = LaborProtectionCorporate
         fields = '__all__'
+        
+class DividendCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = DividendCorporate
+        fields = '__all__'

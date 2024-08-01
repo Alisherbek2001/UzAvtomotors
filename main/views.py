@@ -84,3 +84,7 @@ class FactsCorporateListAPIView(generics.ListAPIView):
 class LaborProtectionCorporateListAPIView(generics.ListAPIView):
     queryset = LaborProtectionCorporate.objects.all()
     serializer_class = LaborProtectionCorporateSerializer
+
+class DividendCorporateListAPIView(generics.ListAPIView):
+    queryset = DividendCorporate.objects.all()
+    serializer_class = DividendCorporateSerializer
