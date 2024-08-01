@@ -80,3 +80,7 @@ class AffiliatesCorporateListAPIView(generics.ListAPIView):
 class FactsCorporateListAPIView(generics.ListAPIView):
     queryset = FactsCorporate.objects.all()
     serializer_class = FactsCorporateSerializer
+    
+class LaborProtectionCorporateListAPIView(generics.ListAPIView):
+    queryset = LaborProtectionCorporate.objects.all()
+    serializer_class = LaborProtectionCorporateSerializer

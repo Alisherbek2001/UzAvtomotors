@@ -129,3 +129,10 @@ class FactsCorporateSerializer(serializers.ModelSerializer):
     class Meta:
         model = FactsCorporate
         fields = '__all__'
+        
+
+class LaborProtectionCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = LaborProtectionCorporate
+        fields = '__all__'
