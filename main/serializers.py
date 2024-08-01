@@ -208,3 +208,9 @@ class NewsSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         news = News.objects.create(**validated_data)
         return news
+    
+class ProductsSerializer(serializers.ModelSerializer):
+    category = CategorySerializer(many=False,read_only=True)
+    class Meta:
+        model = Engine
+        fields = '__all__'

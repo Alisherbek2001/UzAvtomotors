@@ -543,14 +543,10 @@ class NewsImage(BaseModel):
         verbose_name = "News image"
         verbose_name_plural = "News images"
         
-        
-from django.db import models
-
 class Engine(models.Model):
     ENGINE_TYPES = [
         ('CSS_PRIME', 'CSS PRIME'),
         ('STANDARD', 'Standart'),
-        # Boshqa dvigatel turlarini ham qo'shishingiz mumkin
     ]
 
     name = models.CharField(max_length=100, verbose_name="Dvigatel nomi")

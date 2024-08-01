@@ -137,10 +137,10 @@ admin.site.register(ShareholdersCorporate)
 admin.site.register(TenderCorporate)
 admin.site.register(DevelopmentStrategy)
 
-@admin.register(Engine)
 class EngineAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'cylinder_volume', 'max_power', 'fuel_consumption')
     list_filter = ('type', 'number_of_cylinders', 'emission_standard')
     search_fields = ('name', 'type')
+admin.site.register(Engine, EngineAdmin)
     
 admin.site.register(RotationEmployee)

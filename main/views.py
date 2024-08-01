@@ -130,3 +130,7 @@ class NewsListAPIView(generics.ListAPIView):
 class NewsDetailView(generics.RetrieveAPIView):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
+    
+class ProductAPIView(generics.ListAPIView):
+    queryset = Engine.objects.all()
+    serializer_class = ProductsSerializer
