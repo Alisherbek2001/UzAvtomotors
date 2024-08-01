@@ -119,6 +119,18 @@ class NewsAdmin(admin.ModelAdmin):
 safe_register(News, NewsAdmin)
 
 
+class WomanBoardImageInline(admin.TabularInline):
+    model = WomanBoardImage
+    extra = 1
+
+class WomanBoardAdmin(admin.ModelAdmin):
+    inlines = [WomanBoardImageInline]
+    list_display = ['title', 'category', 'slug']
+    search_fields = ['title', 'category__name']
+    list_filter = ['category']
+
+safe_register(WomanBoard, WomanBoardAdmin)
+
 admin.site.register(AffiliatesCorporate)
 admin.site.register(AuditorsRepotsCorporate)
 admin.site.register(BusinessPlanCorporate)

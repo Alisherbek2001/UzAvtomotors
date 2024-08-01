@@ -214,3 +214,15 @@ class ProductsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Engine
         fields = '__all__'
+        
+class WomanBoardImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WomanBoardImage
+        fields = '__all__'        
+        
+class WomanBoardSerializer(serializers.ModelSerializer):
+    category = CategorySerializer(many=False,read_only=True)
+    womanboard_images = WomanBoardImageSerializer(many=True,read_only=True)
+    class Meta:
+        model = WomanBoard
+        fields = '__all__'
