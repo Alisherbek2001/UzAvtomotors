@@ -142,3 +142,9 @@ class DividendCorporateSerializer(serializers.ModelSerializer):
     class Meta:
         model = DividendCorporate
         fields = '__all__'
+        
+class ReportCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = ReportCorporate
+        fields = '__all__'
