@@ -122,3 +122,11 @@ class FinancialCorporateListAPIView(generics.ListAPIView):
 class ResultVotingCorporateListAPIView(generics.ListAPIView):
     queryset = ResultVotingCorporate.objects.all()
     serializer_class = ResultVotingCorporateSerializer
+    
+class NewsListAPIView(generics.ListAPIView):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
+    
+class NewsDetailView(generics.RetrieveAPIView):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer

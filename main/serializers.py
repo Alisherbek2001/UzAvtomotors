@@ -191,3 +191,20 @@ class ResultVotingCorporateSerializer(serializers.ModelSerializer):
     class Meta:
         model = ResultVotingCorporate
         fields = '__all__'
+        
+
+class NewsImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewsImage
+        fields = ['id', 'image']
+
+class NewsSerializer(serializers.ModelSerializer):
+    news_images = NewsImageSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = News
+        fields = ['id', 'title', 'category', 'slug', 'body', 'news_images']
+
+    def create(self, validated_data):
+        news = News.objects.create(**validated_data)
+        return news

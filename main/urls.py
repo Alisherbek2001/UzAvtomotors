@@ -2,6 +2,8 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
+    path('yangiliklar/<int:pk>/',NewsDetailView.as_view(),name='news-detail'),
+    path('yangiliklar/',NewsListAPIView.as_view(),name='news-list'),
     path('aksiyadorlarning/',ResultVotingCorporateListAPIView.as_view(),name='resultvotingcorporate-list'),
     path('moliyaviy/',FinancialCorporateListAPIView.as_view(),name='financialcorporate-list'),
     path('auditor/',AuditorsRepotsCorporateListAPIView.as_view(),name='auiditorcorporate-list'),
