@@ -100,3 +100,7 @@ class PurchasePlanCorporateListAPIView(generics.ListAPIView):
 class TenderCorporateListAPIView(generics.ListAPIView):
     queryset = TenderCorporate.objects.all()
     serializer_class = TenderCorporateSerializer
+    
+class BusinessPlanCorporateListAPIView(generics.ListAPIView):
+    queryset = BusinessPlanCorporate.objects.all()
+    serializer_class = BusinessPlanCorporateSerializer
