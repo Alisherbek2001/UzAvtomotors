@@ -99,3 +99,9 @@ class DutiesCompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = DutiesCompany
         fields = '__all__'
+        
+class CorporateDocumentsCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = CorporateDocumentsCorporate
+        fields = '__all__'

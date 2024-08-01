@@ -56,3 +56,8 @@ class EnergyManagmentCompanyListAPIVIew(generics.ListAPIView):
 class DutiesCompanyListAPIView(generics.ListAPIView):
     queryset = DutiesCompany.objects.all()
     serializer_class = DutiesCompanySerializer
+    
+
+class CorporateDocumentsCorporateListAPIView(generics.ListAPIView):
+    queryset = CorporateDocumentsCorporate.objects.all()
+    serializer_class = CorporateDocumentsCorporateSerializer
