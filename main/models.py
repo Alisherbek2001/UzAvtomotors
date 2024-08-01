@@ -367,7 +367,7 @@ class FactsCorporate(BaseModel):
     subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
     
     def __str__(self) -> str:
-        return self.date
+        return self.name
     
     class Meta:
         verbose_name = "Important Fact"

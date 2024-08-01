@@ -123,3 +123,9 @@ class AffiliatesCorporateSerializer(serializers.ModelSerializer):
     class Meta:
         model = AffiliatesCorporate
         fields = '__all__'
+        
+class FactsCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = FactsCorporate
+        fields = '__all__'

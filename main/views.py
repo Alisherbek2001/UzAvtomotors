@@ -75,3 +75,8 @@ class ShareholdersCorporateListAPIView(generics.ListAPIView):
 class AffiliatesCorporateListAPIView(generics.ListAPIView):
     queryset = AffiliatesCorporate.objects.all()
     serializer_class = AffiliatesCorporateSerializer
+    
+    
+class FactsCorporateListAPIView(generics.ListAPIView):
+    queryset = FactsCorporate.objects.all()
+    serializer_class = FactsCorporateSerializer
