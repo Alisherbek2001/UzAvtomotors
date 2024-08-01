@@ -46,3 +46,105 @@ class GoalCompanySubCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = SubCategory
         fields = ['id', 'name', 'category', 'slug', 'goal_companies']   
+        
+        
+class OurViewSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = OurViewsCompany
+        fields = '__all__'
+        
+        
+class SupervisorBoardSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = SupervisorBoardCompany
+        fields = '__all__'
+        
+class LidershipCompanySerizalizer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = LidershipCompany
+        fields = '__all__'
+        
+        
+class OrganizationalCompanySerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = OrganizationalStructure
+        fields = '__all__'
+        
+class DevelopmentStrategyCompanySerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = DevelopmentStrategy
+        fields = '__all__'
+        
+class EnvironmentalCompanySerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = EnvironmentalProtectionCompany
+        fields = '__all__'
+        
+
+class EnergyManagmentCompanySerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = EnergyManagmentSystemCompany
+        fields = '__all__'
+                
+
+class DutiesCompanySerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = DutiesCompany
+        fields = '__all__'
+        
+class CorporateDocumentsCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = CorporateDocumentsCorporate
+        fields = '__all__'
+        
+class RegulationCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = RegulationCorporate
+        fields = '__all__'
+        
+class ShareholdersCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = ShareholdersCorporate
+        fields = '__all__'
+        
+class AffiliatesCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = AffiliatesCorporate
+        fields = '__all__'
+        
+class FactsCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = FactsCorporate
+        fields = '__all__'
+        
+
+class LaborProtectionCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = LaborProtectionCorporate
+        fields = '__all__'
+        
+class DividendCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = DividendCorporate
+        fields = '__all__'
+        
+class ReportCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = ReportCorporate
+        fields = '__all__'

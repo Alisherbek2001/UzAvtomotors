@@ -232,7 +232,7 @@ class LidershipCompany(BaseModel):
     name = models.CharField(max_length=255)
     position = models.CharField(max_length=255)
     image = models.ImageField(upload_to='main_lidership/company')
-    experience = models.CharField(max_length=255)
+    experience = models.CharField(max_length=255,null=True,blank=True)
     
     def __str__(self) -> str:
         return self.name
@@ -254,7 +254,20 @@ class OrganizationalStructure(BaseModel):
         verbose_name = "Organizational Structure"
         verbose_name_plural = "Organizational Structures"
         
-class EnvironmentalProtectionCompany(BaseException):
+        
+class DevelopmentStrategy(BaseModel):
+    name = models.CharField(max_length=255)
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
+    file = models.FileField(upload_to='development_main/company/')
+    
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        verbose_name = "Development strategy"
+        verbose_name_plural = "Development strategies"
+        
+class EnvironmentalProtectionCompany(BaseModel):
     name = models.CharField(max_length=255)
     subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='main_environmental/company')
@@ -267,7 +280,7 @@ class EnvironmentalProtectionCompany(BaseException):
         verbose_name_plural = "Environmental Protection Privacies"
         
 
-class EnergyManagmentSystemCompany(BaseException):
+class EnergyManagmentSystemCompany(BaseModel):
     name = models.CharField(max_length=255)
     subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='main_energy/company')
@@ -354,7 +367,7 @@ class FactsCorporate(BaseModel):
     subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
     
     def __str__(self) -> str:
-        return self.date
+        return self.name
     
     class Meta:
         verbose_name = "Important Fact"
