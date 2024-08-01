@@ -148,3 +148,9 @@ class ReportCorporateSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReportCorporate
         fields = '__all__'
+        
+class PurchasePlanCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = PurchasePlanCorporate
+        fields = '__all__'
