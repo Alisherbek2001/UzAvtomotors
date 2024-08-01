@@ -179,3 +179,9 @@ class AuditorsRepotsCorporateSerializer(serializers.ModelSerializer):
     class Meta:
         model = AuditorsRepotsCorporate
         fields = '__all__'
+        
+class FinancialCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = FinancialCorporate
+        fields = '__all__'
