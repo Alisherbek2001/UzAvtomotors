@@ -111,3 +111,9 @@ class RegulationCorporateSerializer(serializers.ModelSerializer):
     class Meta:
         model = RegulationCorporate
         fields = '__all__'
+        
+class ShareholdersCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = ShareholdersCorporate
+        fields = '__all__'
