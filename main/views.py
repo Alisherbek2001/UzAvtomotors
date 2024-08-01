@@ -117,3 +117,8 @@ class AuditorsRepotsCorporateListAPIView(generics.ListAPIView):
 class FinancialCorporateListAPIView(generics.ListAPIView):
     queryset = FinancialCorporate.objects.all()
     serializer_class = FinancialCorporateSerializer
+
+
+class ResultVotingCorporateListAPIView(generics.ListAPIView):
+    queryset = ResultVotingCorporate.objects.all()
+    serializer_class = ResultVotingCorporateSerializer

@@ -185,3 +185,9 @@ class FinancialCorporateSerializer(serializers.ModelSerializer):
     class Meta:
         model = FinancialCorporate
         fields = '__all__'
+        
+class ResultVotingCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = ResultVotingCorporate
+        fields = '__all__'
