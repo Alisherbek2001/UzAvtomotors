@@ -154,3 +154,9 @@ class PurchasePlanCorporateSerializer(serializers.ModelSerializer):
     class Meta:
         model = PurchasePlanCorporate
         fields = '__all__'
+        
+class TenderCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = TenderCorporate
+        fields = '__all__'
