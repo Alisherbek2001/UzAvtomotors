@@ -70,3 +70,8 @@ class RegulationCorporateListAPIView(generics.ListAPIView):
 class ShareholdersCorporateListAPIView(generics.ListAPIView):
     queryset = ShareholdersCorporate.objects.all()
     serializer_class = ShareholdersCorporateSerializer
+    
+
+class AffiliatesCorporateListAPIView(generics.ListAPIView):
+    queryset = AffiliatesCorporate.objects.all()
+    serializer_class = AffiliatesCorporateSerializer
