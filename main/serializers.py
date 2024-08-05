@@ -154,3 +154,75 @@ class PurchasePlanCorporateSerializer(serializers.ModelSerializer):
     class Meta:
         model = PurchasePlanCorporate
         fields = '__all__'
+        
+class TenderCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = TenderCorporate
+        fields = '__all__'
+        
+        
+class BusinessPlanCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = BusinessPlanCorporate
+        fields = '__all__'
+        
+class IssueOfSecuritiesCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = IssueOfSecuritiesCorporate
+        fields = '__all__'
+        
+class AuditorsRepotsCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = AuditorsRepotsCorporate
+        fields = '__all__'
+        
+class FinancialCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = FinancialCorporate
+        fields = '__all__'
+        
+class ResultVotingCorporateSerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer(many=False, read_only=True)
+    class Meta:
+        model = ResultVotingCorporate
+        fields = '__all__'
+        
+
+class NewsImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewsImage
+        fields = ['id', 'image']
+
+class NewsSerializer(serializers.ModelSerializer):
+    news_images = NewsImageSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = News
+        fields = ['id', 'title', 'category', 'slug', 'body', 'news_images']
+
+    def create(self, validated_data):
+        news = News.objects.create(**validated_data)
+        return news
+    
+class ProductsSerializer(serializers.ModelSerializer):
+    category = CategorySerializer(many=False,read_only=True)
+    class Meta:
+        model = Engine
+        fields = '__all__'
+        
+class WomanBoardImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WomanBoardImage
+        fields = '__all__'        
+        
+class WomanBoardSerializer(serializers.ModelSerializer):
+    category = CategorySerializer(many=False,read_only=True)
+    womanboard_images = WomanBoardImageSerializer(many=True,read_only=True)
+    class Meta:
+        model = WomanBoard
+        fields = '__all__'

@@ -96,3 +96,46 @@ class ReportCorporateListAPIView(generics.ListAPIView):
 class PurchasePlanCorporateListAPIView(generics.ListAPIView):
     queryset = PurchasePlanCorporate.objects.all()
     serializer_class = PurchasePlanCorporateSerializer
+    
+class TenderCorporateListAPIView(generics.ListAPIView):
+    queryset = TenderCorporate.objects.all()
+    serializer_class = TenderCorporateSerializer
+    
+class BusinessPlanCorporateListAPIView(generics.ListAPIView):
+    queryset = BusinessPlanCorporate.objects.all()
+    serializer_class = BusinessPlanCorporateSerializer
+    
+class IssueOfSecuritiesCorporateListAPIView(generics.ListAPIView):
+    queryset = IssueOfSecuritiesCorporate.objects.all()
+    serializer_class = IssueOfSecuritiesCorporateSerializer
+    
+    
+class AuditorsRepotsCorporateListAPIView(generics.ListAPIView):
+    queryset = AuditorsRepotsCorporate.objects.all()
+    serializer_class = AuditorsRepotsCorporateSerializer
+    
+class FinancialCorporateListAPIView(generics.ListAPIView):
+    queryset = FinancialCorporate.objects.all()
+    serializer_class = FinancialCorporateSerializer
+
+
+class ResultVotingCorporateListAPIView(generics.ListAPIView):
+    queryset = ResultVotingCorporate.objects.all()
+    serializer_class = ResultVotingCorporateSerializer
+    
+class NewsListAPIView(generics.ListAPIView):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
+    
+class NewsDetailView(generics.RetrieveAPIView):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
+    
+class ProductAPIView(generics.ListAPIView):
+    queryset = Engine.objects.all()
+    serializer_class = ProductsSerializer
+
+
+class WomanBoardAPIView(generics.ListAPIView):
+    queryset = WomanBoard.objects.all()
+    serializer_class = WomanBoardSerializer

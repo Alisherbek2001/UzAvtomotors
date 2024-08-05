@@ -2,6 +2,16 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
+    path('ayollar/',WomanBoardAPIView.as_view(),name='woman-list'),
+    path('maxsulotlar/',ProductAPIView.as_view(),name='products-list'),
+    path('yangiliklar/<int:pk>/',NewsDetailView.as_view(),name='news-detail'),
+    path('yangiliklar/',NewsListAPIView.as_view(),name='news-list'),
+    path('aksiyadorlarning/',ResultVotingCorporateListAPIView.as_view(),name='resultvotingcorporate-list'),
+    path('moliyaviy/',FinancialCorporateListAPIView.as_view(),name='financialcorporate-list'),
+    path('auditor/',AuditorsRepotsCorporateListAPIView.as_view(),name='auiditorcorporate-list'),
+    path('qimmatli/',IssueOfSecuritiesCorporateListAPIView.as_view(),name='issuecorporate-list'),
+    path('biznes/',BusinessPlanCorporateListAPIView.as_view(),name='businesscorporate-list'),
+    path('tanlov/',TenderCorporateListAPIView.as_view(),name='tendercorporate-list'),
     path('harid/',PurchasePlanCorporateListAPIView.as_view(),name='purcahecorporate-list'),
     path('hisobotlar/',ReportCorporateListAPIView.as_view(),name='reportcorporate-list'),
     path('dividendlar/',DividendCorporateListAPIView.as_view(),name='dividendcorporate-list'),

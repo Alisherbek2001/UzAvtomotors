@@ -119,6 +119,18 @@ class NewsAdmin(admin.ModelAdmin):
 safe_register(News, NewsAdmin)
 
 
+class WomanBoardImageInline(admin.TabularInline):
+    model = WomanBoardImage
+    extra = 1
+
+class WomanBoardAdmin(admin.ModelAdmin):
+    inlines = [WomanBoardImageInline]
+    list_display = ['title', 'category', 'slug']
+    search_fields = ['title', 'category__name']
+    list_filter = ['category']
+
+safe_register(WomanBoard, WomanBoardAdmin)
+
 admin.site.register(AffiliatesCorporate)
 admin.site.register(AuditorsRepotsCorporate)
 admin.site.register(BusinessPlanCorporate)
@@ -137,10 +149,10 @@ admin.site.register(ShareholdersCorporate)
 admin.site.register(TenderCorporate)
 admin.site.register(DevelopmentStrategy)
 
-@admin.register(Engine)
 class EngineAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'cylinder_volume', 'max_power', 'fuel_consumption')
     list_filter = ('type', 'number_of_cylinders', 'emission_standard')
     search_fields = ('name', 'type')
+admin.site.register(Engine, EngineAdmin)
     
 admin.site.register(RotationEmployee)

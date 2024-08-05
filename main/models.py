@@ -543,14 +543,10 @@ class NewsImage(BaseModel):
         verbose_name = "News image"
         verbose_name_plural = "News images"
         
-        
-from django.db import models
-
 class Engine(models.Model):
     ENGINE_TYPES = [
         ('CSS_PRIME', 'CSS PRIME'),
         ('STANDARD', 'Standart'),
-        # Boshqa dvigatel turlarini ham qo'shishingiz mumkin
     ]
 
     name = models.CharField(max_length=100, verbose_name="Dvigatel nomi")
@@ -588,4 +584,36 @@ class RotationEmployee(BaseModel):
     def __str__(self) -> str:
         return self.filename
     
+class WomanBoard(BaseModel):
+    title = models.CharField(max_length=255)
+    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    slug = models.CharField(max_length=255,null=True,blank=True)
+    body = models.TextField()
+
+    def __str__(self):
+        return f"{self.pk}) {self.title}"
     
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+    
+    class Meta:
+        verbose_name = "WomanBoard"
+        verbose_name_plural = "WomanBoard"
+
+
+class WomanBoardImage(BaseModel):
+    womanboard = models.ForeignKey(WomanBoard, on_delete=models.CASCADE, related_name='womanboard_images')
+    image = models.ImageField(upload_to='woman/womanboard_images/')
+
+    def __str__(self):
+        return f"{self.pk}) {self.womanboard.title}"
+
+    def delete(self, *args, **kwargs):
+        self.image.delete(save=False)
+        super().delete(*args, **kwargs)
+
+    class Meta:
+        verbose_name = "WomanBoard image"
+        verbose_name_plural = "WomanBoard images"
