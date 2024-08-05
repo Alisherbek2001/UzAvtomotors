@@ -37,7 +37,7 @@ class SubCategory(BaseModel):
         verbose_name_plural = 'Subcategories'
 
 class AboutCompany(BaseModel):
-    name = models.CharField(max_length=255)
+    namцe = models.CharField(max_length=255)
     subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     body = models.TextField()
